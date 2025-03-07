@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sara7a-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sara7a-app
+  template:
+    metadata:
+      labels:
+        app: sara7a-app
+    spec:
+      containers:
+        - name: sara7a-app
+          image: el3raky/sara7a-app
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: MONGO_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sara7a-app-service
+spec:
+  type: NodePort
+  selector:
+    app: sara7a-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000
