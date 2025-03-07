@@ -1,6 +1,6 @@
 ## team members:
-adel eleraky kamel
-adham mohamed ahmed
-ahmed mohamed rashad
-verina ehab
-heba sabri
+1. adel eleraky kamel
+2. adham mohamed ahmed
+3. ahmed mohamed rashad
+4. verina ehab
+5. heba sabri
